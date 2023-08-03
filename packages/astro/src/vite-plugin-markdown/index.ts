@@ -109,7 +109,7 @@ export default function markdown({ settings, logging }: AstroPluginOptions): Plu
 				}
 
 				const code = escapeViteEnvReferences(`
-				import { Fragment, spreadAttributes, createComponent, render, renderComponent } from ${JSON.stringify(astroServerRuntimeModulePath)};
+				import { unescapeHTML, spreadAttributes, createComponent, render, renderComponent } from ${JSON.stringify(astroServerRuntimeModulePath)};
 				import { AstroError, AstroErrorData } from ${JSON.stringify(astroErrorModulePath)};
 
 				${layout ? `import Layout from ${JSON.stringify(layout)};` : ''}
@@ -178,9 +178,9 @@ export default function markdown({ settings, logging }: AstroPluginOptions): Plu
 								compiledContent,
 								'server:root': true,
 							}, {
-								'default': () => render\`\${renderComponent(result, 'Fragment', Fragment, { 'set:html': html }, {})}\`
+								'default': () => render\`\${unescapeHTML(html)}\`
 							})}\`;`
-							: `render\`\${renderComponent(result, 'Fragment', Fragment, { 'set:html': html }, {})}\`;`
+							: `render\`\${unescapeHTML(html)}\`;`
 					}
 				});
 				Content[Symbol.for('astro.needsHeadRendering')] = ${layout ? 'false' : 'true'};

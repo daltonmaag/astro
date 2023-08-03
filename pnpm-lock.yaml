@@ -5177,6 +5177,9 @@ importers:
       rehype-slug:
         specifier: ^5.0.1
         version: 5.1.0
+      remark-code-titles:
+        specifier: ^0.1.2
+        version: 0.1.2
 
   packages/markdown/component/test/fixtures/astro-markdown-shiki:
     dependencies:
