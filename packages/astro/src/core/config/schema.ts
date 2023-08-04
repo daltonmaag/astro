@@ -8,12 +8,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { BUNDLED_THEMES } from 'shiki';
 import { z } from 'zod';
-import {
-	appendForwardSlash,
-	prependForwardSlash,
-	removeTrailingForwardSlash,
-	trimSlashes,
-} from '../path.js';
+import { appendForwardSlash, prependForwardSlash, removeTrailingForwardSlash } from '../path.js';
 
 const ASTRO_CONFIG_DEFAULTS = {
 	root: '.',
