@@ -480,8 +480,8 @@ importers:
   packages/astro:
     dependencies:
       '@astrojs/compiler':
-        specifier: ^1.8.0
-        version: 1.8.0
+        specifier: ^1.8.1
+        version: 1.8.1
       '@astrojs/internal-helpers':
         specifier: workspace:*
         version: link:../internal-helpers
@@ -5398,8 +5398,8 @@ packages:
     resolution: {integrity: sha512-dFU7GAMbpTUGPkRoCoMQrGFlTe3qIiQMSOxIXp/nB1Do4My9uogjEmBHdR5Cwr4i6rc5/1R3Od9v8kU/pkHXGQ==}
     dev: true
 
-  /@astrojs/compiler@1.8.0:
-    resolution: {integrity: sha512-E0TI/uyO8n+IPSZ4Fvl9Lne8JKEasR6ZMGvE2G096oTWOXSsPAhRs2LomV3z+/VRepo2h+t/SdVo54wox4eJwA==}
+  /@astrojs/compiler@1.8.1:
+    resolution: {integrity: sha512-C28qplQzgIJ+JU9S+1wNx+ue2KCBUp0TTAd10EWAEkk4RsL3Tzlw0BYvLDDb4KP9jS48lXmR4/1TtZ4aavYJ8Q==}
 
   /@astrojs/language-server@2.2.0(prettier-plugin-astro@0.10.0)(prettier@2.8.8)(typescript@5.1.6):
     resolution: {integrity: sha512-zyEumkwcep3pGyMpcEJFEn96jV6pEg3CUtjehnT9KseDFqf+gPYTbw5nwOpN9uXIJ/E5bAxhqpkr3J2LCQHRrg==}
@@ -15333,7 +15333,7 @@ packages:
     resolution: {integrity: sha512-dPzop0gKZyVGpTDQmfy+e7FKXC9JT3mlpfYA2diOVz+Ui+QR1U4G/s+OesKl2Hib2JJOtAYJs/l+ovgT0ljlFA==}
     engines: {node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0'}
     dependencies:
-      '@astrojs/compiler': 1.8.0
+      '@astrojs/compiler': 1.8.1
       prettier: 2.8.8
       sass-formatter: 0.7.6
     dev: true
@@ -18398,10 +18398,11 @@ packages:
     resolution: {directory: packages/astro, type: directory}
     id: file:packages/astro
     name: astro
+    version: 3.0.0-beta.0
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 1.8.0
+      '@astrojs/compiler': 1.8.1
       '@astrojs/internal-helpers': link:packages/internal-helpers
       '@astrojs/markdown-remark': link:packages/markdown/remark
       '@astrojs/telemetry': link:packages/telemetry
@@ -18477,21 +18478,25 @@ packages:
   file:packages/astro/test/fixtures/css-assets/packages/font-awesome:
     resolution: {directory: packages/astro/test/fixtures/css-assets/packages/font-awesome, type: directory}
     name: '@test/astro-font-awesome-package'
+    version: 0.0.1
     dev: false
 
   file:packages/astro/test/fixtures/multiple-renderers/renderers/one:
     resolution: {directory: packages/astro/test/fixtures/multiple-renderers/renderers/one, type: directory}
     name: '@test/astro-renderer-one'
+    version: 1.0.0
     dev: false
 
   file:packages/astro/test/fixtures/multiple-renderers/renderers/two:
     resolution: {directory: packages/astro/test/fixtures/multiple-renderers/renderers/two, type: directory}
     name: '@test/astro-renderer-two'
+    version: 1.0.0
     dev: false
 
   file:packages/astro/test/fixtures/solid-component/deps/solid-jsx-component:
     resolution: {directory: packages/astro/test/fixtures/solid-component/deps/solid-jsx-component, type: directory}
     name: '@test/solid-jsx-component'
+    version: 0.0.0
     dependencies:
       solid-js: 1.7.6
     dev: false
@@ -18500,6 +18505,7 @@ packages:
     resolution: {directory: packages/integrations/netlify, type: directory}
     id: file:packages/integrations/netlify
     name: '@astrojs/netlify'
+    version: 3.0.0-beta.0
     peerDependencies:
       astro: '*'
     dependencies:
@@ -18513,6 +18519,7 @@ packages:
     resolution: {directory: packages/integrations/vercel, type: directory}
     id: file:packages/integrations/vercel
     name: '@astrojs/vercel'
+    version: 4.0.0-beta.0
     peerDependencies:
       astro: '*'
     dependencies:
