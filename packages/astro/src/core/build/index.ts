@@ -37,15 +37,18 @@ export interface BuildOptions {
 	/**
 	 * Teardown the compiler WASM instance after build. This can improve performance when
 	 * building once, but may cause a performance hit if building multiple times in a row.
+	 *
+	 * @internal only used for testing
+	 * @default true
 	 */
 	teardownCompiler?: boolean;
 }
 
-/** `astro build` */
-export default async function build(
-	inlineConfig: AstroInlineConfig,
-	options: BuildOptions
-): Promise<void> {
+/**
+ * Builds your site for deployment. By default, this will generate static files and place them in a dist/ directory.
+ * If SSR is enabled, this will generate the necessary server files to serve your site.
+ */
+export default async function build(inlineConfig: AstroInlineConfig): Promise<void> {
 	applyPolyfill();
 	const logging = createNodeLogging(inlineConfig);
 	const { userConfig, astroConfig } = await resolveConfig(inlineConfig, 'build');
@@ -53,8 +56,12 @@ export default async function build(
 
 	const settings = createSettings(astroConfig, fileURLToPath(astroConfig.root));
 
+	// Use this hack to prevent the build options being public API
+	// eslint-disable-next-line prefer-rest-params
+	const internalOptions = arguments[1] as BuildOptions | undefined;
+
 	const builder = new AstroBuilder(settings, {
-		...options,
+		...internalOptions,
 		logging,
 		mode: inlineConfig.mode,
 	});
@@ -82,7 +89,7 @@ class AstroBuilder {
 		}
 		this.settings = settings;
 		this.logging = options.logging;
-		this.teardownCompiler = options.teardownCompiler ?? false;
+		this.teardownCompiler = options.teardownCompiler ?? true;
 		this.routeCache = new RouteCache(this.logging);
 		this.origin = settings.config.site
 			? new URL(settings.config.site).origin
