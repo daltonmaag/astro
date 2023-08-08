@@ -17,7 +17,6 @@ import { nodeLogDestination } from '../dist/core/logger/node.js';
 process.env.ASTRO_TELEMETRY_DISABLED = true;
 
 /**
- * @typedef {import('undici').Response} Response
  * @typedef {import('../src/core/dev/dev').DedvServer} DevServer
  * @typedef {import('../src/@types/astro').AstroInlineConfig & { root?: string | URL }} AstroInlineConfig
  * @typedef {import('../src/core/preview/index').PreviewServer} PreviewServer
