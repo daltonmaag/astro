@@ -1,5 +1,22 @@
 # astro
 
+## 3.0.0-beta.1
+
+### Major Changes
+
+- [#7931](https://github.com/withastro/astro/pull/7931) [`2eb6252e6`](https://github.com/withastro/astro/commit/2eb6252e6b5a2c28d29b8026127ecd9575e923d6) Thanks [@bluwy](https://github.com/bluwy)! - Remove support for `Astro.__renderMarkdown` which is used by `@astrojs/markdown-component`.
+
+  The `<Markdown />` component was deprecated in Astro v1 and is completely removed in v3. This integration must now be removed from your project.
+
+  As an alternative, you can use community packages that provide a similar component like https://github.com/natemoo-re/astro-remote instead.
+
+### Patch Changes
+
+- [#7981](https://github.com/withastro/astro/pull/7981) [`c19adcdab`](https://github.com/withastro/astro/commit/c19adcdab3b91662740e7e229d24911625efb346) Thanks [@bluwy](https://github.com/bluwy)! - Remove StreamingCompatibleResponse polyfill
+
+- Updated dependencies [[`10ec4c7e0`](https://github.com/withastro/astro/commit/10ec4c7e078943dfc630867bb8ae77d6843f417e)]:
+  - @astrojs/telemetry@3.0.0-beta.1
+
 ## 3.0.0-beta.0
 
 ### Major Changes
