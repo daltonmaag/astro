@@ -48,7 +48,10 @@ export interface BuildOptions {
  * Builds your site for deployment. By default, this will generate static files and place them in a dist/ directory.
  * If SSR is enabled, this will generate the necessary server files to serve your site.
  */
-export default async function build(inlineConfig: AstroInlineConfig): Promise<void> {
+export default async function build(
+	inlineConfig: AstroInlineConfig,
+	options?: BuildOptions
+): Promise<void> {
 	applyPolyfill();
 	const logging = createNodeLogging(inlineConfig);
 	const { userConfig, astroConfig } = await resolveConfig(inlineConfig, 'build');
@@ -56,12 +59,8 @@ export default async function build(inlineConfig: AstroInlineConfig): Promise<vo
 
 	const settings = createSettings(astroConfig, fileURLToPath(astroConfig.root));
 
-	// Use this hack to prevent the build options being public API
-	// eslint-disable-next-line prefer-rest-params
-	const internalOptions = arguments[1] as BuildOptions | undefined;
-
 	const builder = new AstroBuilder(settings, {
-		...internalOptions,
+		...options,
 		logging,
 		mode: inlineConfig.mode,
 	});

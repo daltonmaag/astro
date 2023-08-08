@@ -35,7 +35,10 @@ export type SyncInternalOptions = SyncOptions & {
  * Generates TypeScript types for all Astro modules. This sets up a `src/env.d.ts` file for type inferencing,
  * and defines the `astro:content` module for the Content Collections API.
  */
-export default async function sync(inlineConfig: AstroInlineConfig): Promise<ProcessExit> {
+export default async function sync(
+	inlineConfig: AstroInlineConfig,
+	options?: SyncOptions
+): Promise<ProcessExit> {
 	const logging = createNodeLogging(inlineConfig);
 	const { userConfig, astroConfig } = await resolveConfig(inlineConfig ?? {}, 'sync');
 	telemetry.record(eventCliSession('sync', userConfig));
@@ -48,11 +51,7 @@ export default async function sync(inlineConfig: AstroInlineConfig): Promise<Pro
 		command: 'build',
 	});
 
-	// Use this hack to prevent the sync options being public API
-	// eslint-disable-next-line prefer-rest-params
-	const internalOptions = arguments[1] as SyncOptions | undefined;
-
-	return await syncInternal(settings, { ...internalOptions, logging });
+	return await syncInternal(settings, { ...options, logging });
 }
 
 /**
